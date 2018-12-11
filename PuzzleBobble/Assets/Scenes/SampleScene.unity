@@ -536,7 +536,7 @@ GameObject:
   - component: {fileID: 650525357}
   - component: {fileID: 650525358}
   m_Layer: 0
-  m_Name: PJ_0
+  m_Name: PJIzqd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -799,7 +799,7 @@ GameObject:
   - component: {fileID: 1538173501}
   - component: {fileID: 1538173502}
   m_Layer: 0
-  m_Name: PJTurn_0
+  m_Name: PJDcha
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
