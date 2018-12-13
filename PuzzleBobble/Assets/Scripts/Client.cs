@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class Player {
     public string playerName;
@@ -51,16 +52,14 @@ public class Client : MonoBehaviour {
 
     public void Connect() {
 
+        string pName = GameObject.Find("nombre").GetComponent<InputField>().text;
 
+        if (pName == "") {
+            Debug.Log("Debes escribir un nombre");
+            return;
+        }
 
-        //string pName = GameObject.Find("NameInput").GetComponent<InputField>().text;
-
-        //if (pName == "") {
-        //    Debug.Log("Debes escribir un nombre");
-        //    return;
-        //}
-
-        //playerName = pName;
+        playerName = pName;
 
         NetworkTransport.Init();
         ConnectionConfig cc = new ConnectionConfig();
@@ -75,7 +74,6 @@ public class Client : MonoBehaviour {
 
         connectionTime = Time.time;
         isConnected = true;
-
     }
 
     private void Update() {
@@ -92,41 +90,39 @@ public class Client : MonoBehaviour {
         byte error;
         NetworkEventType recData = NetworkTransport.Receive(out recHostId, out connectionId, out channelId, recBuffer, bufferSize, out dataSize, out error);
         switch (recData) {
-            /*case NetworkEventType.Nothing:
+            case NetworkEventType.Nothing:
                 break;
 
             case NetworkEventType.ConnectEvent:
-                break;*/
+                break;
 
-            //case NetworkEventType.DataEvent:
-            //    string msg = Encoding.Unicode.GetString(recBuffer, 0, dataSize);
-            //    //Debug.Log("receiving: " + msg);
-            //    string[] splitData = msg.Split('|');
-            //    Debug.Log("dato del case" + splitData[0] + "segundo valor" + splitData[1]);
-            //    switch (splitData[0]) {
-            //        case "ASKNAME":
-            //            OnAskName(splitData);
-            //            break;
+            case NetworkEventType.DataEvent:
+                string msg = Encoding.Unicode.GetString(recBuffer, 0, dataSize);
+                //Debug.Log("receiving: " + msg);
+                string[] splitData = msg.Split('|');
+                Debug.Log("dato del case" + splitData[0] + "segundo valor" + splitData[1]);
+                switch (splitData[0]) {
+                    case "ASKNAME":
+                        OnAskName(splitData);
+                        break;
 
-            //        case "CNN":
-            //            Debug.Log("dato del cnn " + splitData[1] + " segundo valor " + splitData[2]);
-            //            SpawnPlayer(splitData[1], int.Parse(splitData[2]));
-            //            break;
+                    case "CNN":
+                Debug.Log("dato del cnn " + splitData[1] + " segundo valor " + splitData[2]);
+                SpawnPlayer(splitData[1], int.Parse(splitData[2]));
+                break;
 
-            //        case "DC":
-            //            break;
+                    case "DC":
+                        break;
 
-            //        case "EMPEZAR":
-            //            pelota.SetActive(true);
-            //            break;
+                    //        case "EMPEZAR":
+                    //            pelota.SetActive(true);
+                    //            break;
 
-            //        case "MOVER":
-            //            jugadores.Find(x => x.playerName == splitData[1]).avatar.GetComponent<mover_pala>().CambiarDireccion(int.Parse(splitData[2]));
-            //            movido = false;
-            //            break;
-            //        case "PARARPALA":
-            //            jugadores.Find(x => x.playerName == splitData[1]).avatar.GetComponent<mover_pala>().CambiarDireccion(0);
-            //            break;
+                    case "MOVER":                           
+                      jugadores.Find(x => x.playerName == splitData[1]).avatar.GetComponent<MoverFlecha>().CambiarDireccion(int.Parse(splitData[2]));
+                       movido = false;
+                        break;
+           
             //        case "MOVERPELOTA":
             //            velocidad = float.Parse(splitData[1]);
             //            _velocidadPelota = new Vector3(1, 0.3F, 0);
@@ -157,11 +153,11 @@ public class Client : MonoBehaviour {
             //            Debug.Log("Mensaje Invalido" + msg);
             //            break;
 
-            //    }
-            //    break;
+                }
+               break;
 
-                /* case NetworkEventType.DisconnectEvent:
-                     break;*/
+                 case NetworkEventType.DisconnectEvent:
+                     break;
         }
         //control del movimiento
         if (Input.GetKey(KeyCode.DownArrow) && movido == false) {
