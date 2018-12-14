@@ -73,6 +73,15 @@ public class Server : MonoBehaviour {
 
                     case "cnn":
                         break;
+                    case "left":                       
+                        Send("move|" + splitData[1] + "|50", reliableChannel, clients);
+                        break;
+                    case "right":
+                        Send("move|" + splitData[1] + "|-50", reliableChannel, clients);
+                        break;
+                    case "stop":
+                        Send("move|" + splitData[1] + "|0", reliableChannel, clients);
+                        break;
                 }
                 break;
 
