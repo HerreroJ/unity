@@ -2,10 +2,10 @@ fileFormatVersion: 2
 guid: 8f8a83d94bb880546b9d98ad27c37b7d
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Blower_0
-    21300002: Blower_2
-    21300004: Blower_3
-    21300006: Blower_4
+    21300000: Blower_1
+    21300002: Blower_3
+    21300004: Blower_0
+    21300006: Blower_2
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -99,7 +99,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Blower_0
+      name: Blower_1
       rect:
         serializedVersion: 2
         x: 19
@@ -107,33 +107,13 @@ TextureImporter:
         width: 16
         height: 26
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97fdc34b2259fff4e97a2c84da4bd78e
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Blower_2
-      rect:
-        serializedVersion: 2
-        x: 53
-        y: 0
-        width: 15
-        height: 26
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 97441ba1fb8059d469e931f6ffe3fab4
+      spriteID: 80bafe08287624b41b894b127e4ea004
       vertices: []
       indices: 
       edges: []
@@ -142,38 +122,58 @@ TextureImporter:
       name: Blower_3
       rect:
         serializedVersion: 2
-        x: 2
-        y: 0
-        width: 16
-        height: 27
+        x: 53
+        y: 1
+        width: 15
+        height: 26
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 334294885cf6e6a4cb65eff174d9c42c
+      spriteID: 07f5726e29df77046807ec628d863a75
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blower_4
+      name: Blower_0
       rect:
         serializedVersion: 2
-        x: 37
-        y: 0
+        x: 1
+        y: 1
         width: 16
         height: 26
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f429b355411dc140a5fb55a0fd7e714
+      spriteID: 86d9cb1286a2f9942b3ea8a642b7ac44
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blower_2
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 1
+        width: 16
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d5159c1642582841b901d229b57e6f4
       vertices: []
       indices: 
       edges: []
@@ -181,7 +181,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: c9ae5a272ae1f7d4a94103461c845c9e
+    spriteID: 2df6c9f96b537d748b9b76163868cfb6
     vertices: []
     indices: 
     edges: []

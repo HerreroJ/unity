@@ -66,7 +66,7 @@ public class Server : MonoBehaviour {
 
             case NetworkEventType.DataEvent:
                 string msg = Encoding.Unicode.GetString(recBuffer, 0, dataSize);
-                Debug.Log("QUE RECIBO DE CADA CONEXION" + connectionId + ": " + msg);
+                //Debug.Log("QUE RECIBO DE CADA CONEXION" + connectionId + ": " + msg);
                 string[] splitData = msg.Split('|');
                 switch (splitData[0])
                 {
@@ -85,6 +85,9 @@ public class Server : MonoBehaviour {
                         break;
                     case "stop":
                         Send("move|" + splitData[1] + "|0", reliableChannel, clients);
+                        break;
+                    case "fire":
+                        Send("shoot|" + splitData[1] + "|1", reliableChannel, clients);
                         break;
                 }
                 break;

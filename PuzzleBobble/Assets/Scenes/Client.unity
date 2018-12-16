@@ -272,7 +272,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 236020525}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.81, y: -4.59, z: -0.061272655}
+  m_LocalPosition: {x: -2.59, y: 1.61, z: -0.061272655}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -776,9 +776,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: 
-  jugador1: {fileID: 236020526}
-  jugador2: {fileID: 1748922192}
-  playerPrefab: {fileID: 1004484976309368, guid: 1a86338db0d54ae4ea3f5e672ce5007d,
+  p1: {fileID: 236020526}
+  p2: {fileID: 1748922192}
+  playerPrefab: {fileID: 1045448912240244, guid: 1a86338db0d54ae4ea3f5e672ce5007d,
     type: 2}
   canvas1: {fileID: 447956243}
   canvas2: {fileID: 857775136}
@@ -1160,7 +1160,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1748922191}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.83, y: -4.59, z: -0.061272655}
+  m_LocalPosition: {x: 9.31, y: 1.34, z: -0.061272655}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

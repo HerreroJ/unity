@@ -32,7 +32,7 @@ public class Client : MonoBehaviour {
     public string playerName;
     private int ourClientId;
 
-    public Transform jugador1, jugador2;
+    public Transform p1, p2;
 
 
     public List<Player> players = new List<Player>();
@@ -91,10 +91,14 @@ public class Client : MonoBehaviour {
                         SpawnPlayer(splitData[1], int.Parse(splitData[2]));
                         break;
                     case "move":
-                        players.Find(x => x.playerName == splitData[1]).avatar.transform.FindChild("Arrow").GetComponent<MoveArrow>().MoveArrowOne(int.Parse(splitData[2]));
+                        players.Find(x => x.playerName == splitData[1]).avatar.transform.Find("Arrow").GetComponent<MoveArrow>().MoveArrowOne(int.Parse(splitData[2]));
+                        break;
+                    case "shoot":
+                        players.Find(x => x.playerName == splitData[1]).avatar.transform.Find("PJ_0").GetComponent<Animator>().SetTrigger("TakeBall");
+                        players.Find(x => x.playerName == splitData[1]).avatar.transform.Find("Blower_0").GetComponent<Animator>().SetTrigger("ShootBall");
                         break;
                     default:
-                        Debug.Log("Mensaje Invalido" + msg);
+                        //Debug.Log("Mensaje Invalido" + msg);
                         break;
                 }
                 break;
@@ -102,16 +106,20 @@ public class Client : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             Send("left|" + playerName, reliableChannel);
-            Debug.Log(playerName);
+            //Debug.Log(playerName);
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             Send("right|" + playerName, reliableChannel);
-            Debug.Log(playerName);
+            //Debug.Log(playerName);
         }
         else if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
         {
             Send("stop|" + playerName, reliableChannel);
+        }
+        else if (Input.GetKeyUp(KeyCode.Space))
+        {
+            Send("fire|" + playerName, reliableChannel);
         }
     }
     private void OnAskName(string[] data)
@@ -145,16 +153,15 @@ public class Client : MonoBehaviour {
         {
             canvas1.SetActive(false);
             canvas2.SetActive(true);
-
         }
         Player p = new Player();
         if (cnnId % 2 != 0)
         {
-            p.avatar = Instantiate(playerPrefab, jugador1.position, Quaternion.identity);//con esto creo un jugador
+            p.avatar = Instantiate(playerPrefab, p1.position, Quaternion.identity);//con esto creo un jugador
         }
         else
         {
-            p.avatar = Instantiate(playerPrefab, jugador2.position, Quaternion.identity);//con esto creo un jugador
+            p.avatar = Instantiate(playerPrefab, p2.position, Quaternion.identity);//con esto creo un jugador
         }
         p.playerName = playerName;
         p.connectId = cnnId;
