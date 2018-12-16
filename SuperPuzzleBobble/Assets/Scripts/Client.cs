@@ -132,6 +132,7 @@ public class Client : MonoBehaviour {
         if (cnnId == ourClientId) {
             canvas1.SetActive(false);
             canvas2.SetActive(true);
+
         }
         Player p = new Player();
         if (cnnId % 2 != 0) {
