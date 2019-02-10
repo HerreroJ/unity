@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1678246013205634}
+  m_IsPrefabAsset: 1
+--- !u!1 &1678246013205634
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4367019571157244}
+  - component: {fileID: 114968194548970640}
+  m_Layer: 0
+  m_Name: BallsPoolOjectP2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &4367019571157244
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1678246013205634}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.3223766, y: 0.12643343, z: 2.171875}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114968194548970640
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1678246013205634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55485d761ffe4f34fa32cd15717ec775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  balls:
+  - {fileID: 1245924077903152, guid: 159752312c489b145984ff81159b50a9, type: 2}
+  - {fileID: 1893738745316282, guid: b82852dd05382b340bce0613548be141, type: 2}
+  - {fileID: 1904321142663926, guid: 923a991f4501e0f439f57560d793ac28, type: 2}
+  - {fileID: 1538316756104782, guid: c6cbc63a6cd18a84e9094b43020c6563, type: 2}
+  - {fileID: 1602518158785156, guid: 1102ae793fe7db842b92c8bf641f6255, type: 2}
+  - {fileID: 1095011073983472, guid: 9028a80a45124124097c1583bed2a284, type: 2}
+  - {fileID: 1953116252220818, guid: 4fe9181a6e85e564e82f45b0d40ea163, type: 2}
+  - {fileID: 1660835696926914, guid: 54dc05a559a94d34f9b1f05438ca29f3, type: 2}
+  BallPosSack: {fileID: 1821006501881990, guid: 1a86338db0d54ae4ea3f5e672ce5007d,
+    type: 2}
+  BallPosArrow: {fileID: 1668333316064600, guid: 1a86338db0d54ae4ea3f5e672ce5007d,
+    type: 2}

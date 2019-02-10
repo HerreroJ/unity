@@ -23,4 +23,8 @@ public class MoveArrow : MonoBehaviour {
     {
         this.rotationPerSec = speed;
     }
+
+    public Vector3 GetShootDirection() {
+        return miTransform.Find("PuntoLejano").transform.position - miTransform.Find("PuntoCentro").transform.position;
+    }
 }

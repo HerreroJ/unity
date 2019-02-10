@@ -24,6 +24,11 @@ public class Server : MonoBehaviour {
     private bool isStarted = false;
     private byte error;
 
+    private float time = 60;
+
+    private int[] ballsArrayP1 = new int[40];
+    private int[] ballsArrayP2 = new int[40];
+
     private List<ServerClient> clients = new List<ServerClient>();
     // Use this for initialization
     void Start()
@@ -39,6 +44,13 @@ public class Server : MonoBehaviour {
         webHostId = NetworkTransport.AddWebsocketHost(topo, port, null);
 
         isStarted = true;
+
+        for (int i = 0; i < ballsArrayP1.Length - 1; i++) {
+            ballsArrayP1[i] = Random.Range(0, 8);
+        }
+        for (int i = 0; i < ballsArrayP2.Length - 1; i++) {
+            ballsArrayP2[i] = Random.Range(0, 8);
+        }
     }
 
     // Update is called once per frame
@@ -73,27 +85,59 @@ public class Server : MonoBehaviour {
 
                     case "nameis":
                         OnNameIs(connectionId, splitData[1]);
+                        if (connectionId % 2 != 0) {
+                            
+                        } else {
+                            string nmb = "";
+                            for (int i = 0; i < ballsArrayP1.Length - 1; i++) {
+                                nmb = nmb + ballsArrayP1[i] + ".";
+                            }
+                            Send("generateBallsP1|" + nmb + "|" + clients.Find(x => x.playerName != splitData[1]).playerName, reliableChannel, clients);
+                            string nmb2 = "";
+                            for (int i = 0; i < ballsArrayP2.Length - 1; i++) {
+                                nmb2 = nmb2 + ballsArrayP2[i] + ".";
+                            }
+                            Send("generateBallsP2|" + nmb2 + "|" + clients.Find(x => x.playerName == splitData[1]).playerName, reliableChannel, clients);                           
+                        }
                         break;
 
                     case "cnn":
                         break;
                     case "left":
-                        Send("move|" + splitData[1] + "|50", reliableChannel, clients);
+                        Send("moveArrow|" + splitData[1] + "|50", reliableChannel, clients);
                         break;
                     case "right":
-                        Send("move|" + splitData[1] + "|-50", reliableChannel, clients);
+                        Send("moveArrow|" + splitData[1] + "|-50", reliableChannel, clients);
                         break;
                     case "stop":
-                        Send("move|" + splitData[1] + "|0", reliableChannel, clients);
+                        Send("moveArrow|" + splitData[1] + "|0", reliableChannel, clients);
                         break;
                     case "fire":
                         Send("shoot|" + splitData[1] + "|1", reliableChannel, clients);
                         break;
+                    /*case "score":
+                        Send("scorepoints|" + splitData[1] + "|" + splitData[2], reliableChannel, clients);
+                        break;*/
                 }
                 break;
 
             case NetworkEventType.DisconnectEvent:
+                for (int i = 0; i < clients.Count; i++) {
+                    if (clients[i].connectionId == connectionId) {
+                        clients.RemoveAt(i);
+                    }
+                }
                 break;
+        }
+        if (clients.Count >= 2) {
+            int lastTime = (int)time;
+            time -= Time.deltaTime;
+            if ((int)time != lastTime) {
+                Send("time|" + (int)time, reliableChannel, clients);
+            }
+            if ((int)time == 0) {
+                Send("gameover|", reliableChannel, clients);
+            }
         }
     }
     private void onConnection(int cnnId)
